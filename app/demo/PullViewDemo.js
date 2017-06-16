@@ -1,7 +1,6 @@
 import React, {PureComponent} from 'react';
-import {View, Text, Dimensions} from 'react-native';
+import {View, Text, Dimensions,StyleSheet,ActivityIndicator} from 'react-native';
 import {PullView} from 'react-native-rk-pull-to-refresh'
-import Arrow from './Arrow'
 
 const width = Dimensions.get('window').width
 const topIndicatorHeight = 50
@@ -26,21 +25,29 @@ export default class PullViewDemo extends PureComponent {
     }
 
     onPullStateChangeHeight = (pulling, pullok, pullrelease, moveHeight) => {
-        if (!pullrelease) { //没有释放的时候就跟随手指进行转动
-            //停止自转
-            this.arrow && this.arrow.stopRotate()
-            //开始跟随手指进行转动
-            this.arrow && this.arrow.setRotate(moveHeight)
-        } else { //释放状态的时候就进行自转
-            this.arrow && this.arrow.startRotate()
+        if (pulling) {
+            this.txtPulling && this.txtPulling.setNativeProps({style: styles.show});
+            this.txtPullok && this.txtPullok.setNativeProps({style: styles.hide});
+            this.txtPullrelease && this.txtPullrelease.setNativeProps({style: styles.hide});
+        } else if (pullok) {
+            this.txtPulling && this.txtPulling.setNativeProps({style: styles.hide});
+            this.txtPullok && this.txtPullok.setNativeProps({style: styles.show});
+            this.txtPullrelease && this.txtPullrelease.setNativeProps({style: styles.hide});
+        } else if (pullrelease) {
+            this.txtPulling && this.txtPulling.setNativeProps({style: styles.hide});
+            this.txtPullok && this.txtPullok.setNativeProps({style: styles.hide});
+            this.txtPullrelease && this.txtPullrelease.setNativeProps({style: styles.show});
         }
     }
 
 
     topIndicatorRender = () => {
         return (
-            <View style={{justifyContent: 'center', alignItems: 'center', height: topIndicatorHeight}}>
-                <Arrow ref={(c) => this.arrow = c}/>
+            <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: topIndicatorHeight}}>
+                <ActivityIndicator size="small" color="gray" style={{marginRight: 5}}/>
+                <Text ref={(c) => {this.txtPulling = c;}} style={styles.hide}>pulling...</Text>
+                <Text ref={(c) => {this.txtPullok = c;}} style={styles.hide}>pullok...</Text>
+                <Text ref={(c) => {this.txtPullrelease = c;}} style={styles.hide}>pullrelease...</Text>
             </View>
         );
     }
@@ -56,3 +63,16 @@ export default class PullViewDemo extends PureComponent {
         this.pull && this.pull.beginRefresh()
     }
 }
+
+const styles = StyleSheet.create({
+    hide: {
+        position: 'absolute',
+        left: 10000,
+        backgroundColor: 'transparent'
+    },
+    show: {
+        position: 'relative',
+        left: 0,
+        backgroundColor: 'transparent'
+    }
+});
