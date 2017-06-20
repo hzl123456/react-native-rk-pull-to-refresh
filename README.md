@@ -5,13 +5,13 @@ A pull to refresh component for react-native, same api on both android and ios,a
 npm install react-native-rk-pull-to-refresh --save <br>
 react-native link react-native-rk-pull-to-refresh
 ## Installation Android
-`.`In android/settings.gradle
+* In android/settings.gradle
 ```
 ...
 include ':react-native-rk-pull-to-refresh'
 project(':react-native-rk-pull-to-refresh').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-rk-pull-to-refresh/android')
 ```
-`.`In android/app/build.gradle
+* In android/app/build.gradle
 ```
 ...
 dependencies {
@@ -20,7 +20,7 @@ dependencies {
      compile project(':react-native-rk-pull-to-refresh')
 }
 ```
-`.`In MainApplication.java
+* In MainApplication.java
 ```
 ...
 import com.pulltorefresh.PullToRefreshPackage;    //import package
@@ -200,7 +200,7 @@ topIndicatorHeight |number |yes | |top pulling render header,when topIndicatorRe
 onPullStateChangeHeight |func|yes| |when pulling, this function will be called
 onPushing|func|yes| |when pulling, this function will be called
 ## Method
-beginRefresh():force begin pull down refresh
+beginRefresh():force begin pull down refresh <br>
 resolveHandler():end pull down refresh
 
 
