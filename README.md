@@ -46,11 +46,13 @@ getScrollMetrics = () => {
 ```
 and add this to VirtualizedList(node_modules/react-native/Libraries/Lists/VirtualizedList.js)
 ```
+...
  getScrollMetrics = () => {
     return this._scrollMetrics
  }
+ ...
 ```
-### Use it for listview with default style
+### Use it for Listview with default style
 ```
 import React, {PureComponent} from 'react';
 import {ListView, View, Text, Dimensions} from 'react-native';
@@ -106,7 +108,7 @@ export default class PullListViewDemo extends PureComponent {
 }
 
 ```
-### Use it for view with you owner style
+### Use it for View with you owner style
 ```
 import React, {PureComponent} from 'react';
 import {View, Text, Dimensions,StyleSheet,ActivityIndicator} from 'react-native';
