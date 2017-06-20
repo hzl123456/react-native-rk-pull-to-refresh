@@ -1,9 +1,9 @@
 # react-native-rk-pull-to-refresh（ios/android）
 a react native pull to refresh Component for both android and ios and use the same api
-##Installation
+#Installation
 npm install react-native-rk-pull-to-refresh --save
 react-native link react-native-rk-pull-to-refresh
-##Installation Android
+#Installation Android
 1.In android/settings.gradle
 ```
 ...
