@@ -1,4 +1,5 @@
 # react-native-rk-pull-to-refresh（ios/android）
+[简体中文](https://github.com/hzl123456/react-native-rk-pull-to-refresh/blob/master/README-ZH.md)
 A pull to refresh component for react-native, same api on both android and ios,also you can design you owner pull style for this component.you can use it for most of the component in react-native such as view,scrollview,listview and flatlist.
 ## Preview
 ## Installation
