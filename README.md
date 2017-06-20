@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
 ## Full Demo
 clone or download PullToRefreshDemo
 ## Props
-porp | type | Optional | Default | Description
+Porp|Type|Optional|Default|Description
 ---- | ---- | -------  | ------- | ------------
 refreshable | bool | yes | true |can pull to refresh or not
 isContentScroll |  bool | yes |false|content scroll when pulling
