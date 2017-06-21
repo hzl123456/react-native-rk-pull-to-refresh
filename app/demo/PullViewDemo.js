@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-import {View, Text, Dimensions,StyleSheet,ActivityIndicator} from 'react-native';
+import {View, Text, Dimensions, StyleSheet, ActivityIndicator} from 'react-native';
 import {PullView} from 'react-native-rk-pull-to-refresh'
 
 const width = Dimensions.get('window').width
@@ -43,11 +43,22 @@ export default class PullViewDemo extends PureComponent {
 
     topIndicatorRender = () => {
         return (
-            <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: topIndicatorHeight}}>
+            <View style={{
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: topIndicatorHeight
+            }}>
                 <ActivityIndicator size="small" color="gray" style={{marginRight: 5}}/>
-                <Text ref={(c) => {this.txtPulling = c;}} style={styles.hide}>pulling...</Text>
-                <Text ref={(c) => {this.txtPullok = c;}} style={styles.hide}>pullok...</Text>
-                <Text ref={(c) => {this.txtPullrelease = c;}} style={styles.hide}>pullrelease...</Text>
+                <Text ref={(c) => {
+                    this.txtPulling = c;
+                }} style={styles.hide}>pulling...</Text>
+                <Text ref={(c) => {
+                    this.txtPullok = c;
+                }} style={styles.hide}>pullok...</Text>
+                <Text ref={(c) => {
+                    this.txtPullrelease = c;
+                }} style={styles.hide}>pullrelease...</Text>
             </View>
         );
     }
