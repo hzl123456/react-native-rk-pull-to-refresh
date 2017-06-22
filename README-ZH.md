@@ -6,38 +6,6 @@
 ![android](https://github.com/hzl123456/react-native-rk-pull-to-refresh/blob/master/image/android.gif)
 ## 安装
 npm install react-native-rk-pull-to-refresh --save <br>
-react-native link react-native-rk-pull-to-refresh
-## Android安装
-* In android/settings.gradle
-```
-...
-include ':react-native-rk-pull-to-refresh'
-project(':react-native-rk-pull-to-refresh').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-rk-pull-to-refresh/android')
-```
-* In android/app/build.gradle
-```
-...
-dependencies {
-    ...
-    // From node_modules
-     compile project(':react-native-rk-pull-to-refresh')
-}
-```
-* In MainApplication.java
-```
-...
-import com.pulltorefresh.PullToRefreshPackage;    //import package
-...
- @Override
- protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(
-             new MainReactPackage(),
-             new PullToRefreshPackage()
-    );
- }
-...
-
-```
 ## 如何使用
 它内部包含了PullView,PullScrollView,PullListView和PullFlatList，如果你想使用PullFlatList的话，那么你要保持你的React Native版本在0.43及以上。并且你要添加如下的代码到FlatList(node_modules/react-native/Libraries/Lists/FlatList.js)中
 ```
