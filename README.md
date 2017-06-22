@@ -6,38 +6,6 @@ A pull to refresh component for react-native, same api on both android and ios,a
 ![android](https://github.com/hzl123456/react-native-rk-pull-to-refresh/blob/master/image/android.gif)
 ## Installation
 npm install react-native-rk-pull-to-refresh --save <br>
-react-native link react-native-rk-pull-to-refresh
-## Installation Android
-* In android/settings.gradle
-```
-...
-include ':react-native-rk-pull-to-refresh'
-project(':react-native-rk-pull-to-refresh').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-rk-pull-to-refresh/android')
-```
-* In android/app/build.gradle
-```
-...
-dependencies {
-    ...
-    // From node_modules
-     compile project(':react-native-rk-pull-to-refresh')
-}
-```
-* In MainApplication.java
-```
-...
-import com.pulltorefresh.PullToRefreshPackage;    //import package
-...
- @Override
- protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(
-             new MainReactPackage(),
-             new PullToRefreshPackage()
-    );
- }
-...
-
-```
 ## How to use
 it contains PullView,PullScrollView,PullListView and PullFlatList.if you want to use PullFlatList,you should use this component whith React Native 0.43 and newer.then you must add this to FlatList(node_modules/react-native/Libraries/Lists/FlatList.js)
 ```
