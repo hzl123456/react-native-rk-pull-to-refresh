@@ -1,13 +1,13 @@
 # react-native-rk-pull-to-refresh（ios/android）
 [中文说明](https://github.com/hzl123456/react-native-rk-pull-to-refresh/blob/master/README-ZH.md) <br><br>
-A pull to refresh component for react-native, same api on both android and ios,also you can design you owner pull style for this component.you can use it for most of the component in react-native such as view,scrollview,listview and flatlist.
+A pull to refresh component for react-native, same api on both android and ios.Also you can design you owner pull style for this component.You can use it for most of the component in react-native such as View,Scrollview,Listview and Flatlist.
 ## Preview
 ![ios](https://github.com/hzl123456/react-native-rk-pull-to-refresh/blob/master/image/ios.gif) <br><br>
 ![android](https://github.com/hzl123456/react-native-rk-pull-to-refresh/blob/master/image/android.gif)
 ## Installation
 npm install react-native-rk-pull-to-refresh --save <br>
 ## How to use
-it contains PullView,PullScrollView,PullListView and PullFlatList.if you want to use PullFlatList,you should use this component whith React Native 0.43 and newer.then you must add this to FlatList(node_modules/react-native/Libraries/Lists/FlatList.js)
+It contains PullView,PullScrollView,PullListView and PullFlatList.If you want to use PullFlatList,you should use this component whith React Native 0.43 and newer.Then you must add this to FlatList(node_modules/react-native/Libraries/Lists/FlatList.js)
 ```
 ...
 getScrollMetrics = () => {
@@ -15,7 +15,7 @@ getScrollMetrics = () => {
 }
 ...
 ```
-and add this to VirtualizedList(node_modules/react-native/Libraries/Lists/VirtualizedList.js)
+And add this to VirtualizedList(node_modules/react-native/Libraries/Lists/VirtualizedList.js)
 ```
 ...
  getScrollMetrics = () => {
