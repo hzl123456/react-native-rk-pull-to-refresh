@@ -34,7 +34,7 @@ export default class PullFlatListDemo extends PureComponent {
 
     _onPullRelease = () => {
         setTimeout(() => {
-            this.pull && this.pull.resolveHandler()
+            this.pull && this.pull.finishRefresh()
         }, 2000)
     }
 
@@ -46,7 +46,7 @@ export default class PullFlatListDemo extends PureComponent {
     }
 
     componentDidMount() {
-        this.pull && this.pull.beginRefresh()
+        this.pull && this.pull.startRefresh()
     }
 
 }

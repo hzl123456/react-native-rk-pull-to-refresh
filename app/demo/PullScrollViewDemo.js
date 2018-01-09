@@ -31,11 +31,11 @@ export default class PullScrollViewDemo extends PureComponent {
 
     _onPullRelease = () => {
         setTimeout(() => {
-            this.pull && this.pull.resolveHandler()
+            this.pull && this.pull.finishRefresh()
         }, 2000)
     }
 
     componentDidMount() {
-        this.pull && this.pull.beginRefresh()
+        this.pull && this.pull.startRefresh()
     }
 }

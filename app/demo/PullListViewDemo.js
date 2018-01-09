@@ -23,7 +23,7 @@ export default class PullListViewDemo extends PureComponent {
     render() {
         return (
             <PullListView
-                ref={(c)=>this.pull=c}
+                ref={(c) => this.pull = c}
                 isContentScroll={true}
                 style={{flex: 1, width: width}}
                 onPushing={this.props.onPushing}
@@ -35,19 +35,19 @@ export default class PullListViewDemo extends PureComponent {
 
     _onPullRelease = () => {
         setTimeout(() => {
-            this.pull && this.pull.resolveHandler()
+            this.pull && this.pull.finishRefresh()
         }, 2000)
     }
 
     _renderRow = (rowData) => {
         return (
-            <View style={{flex: 1, height: 50, justifyContent: 'center', alignItems: 'center'}}>
+            <View style={{width: width, height: 50, justifyContent: 'center', alignItems: 'center'}}>
                 <Text>{rowData}</Text>
             </View>);
     }
 
     componentDidMount() {
-        this.pull && this.pull.beginRefresh()
+        this.pull && this.pull.startRefresh()
     }
 }
 

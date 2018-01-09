@@ -24,16 +24,16 @@ export default class PullViewDemo extends PureComponent {
         )
     }
 
-    onPullStateChangeHeight = (pulling, pullok, pullrelease, moveHeight) => {
-        if (pulling) {
+    onPullStateChangeHeight = (pullState, moveHeight) => {
+        if (pullState == 'pulling') {
             this.txtPulling && this.txtPulling.setNativeProps({style: styles.show});
             this.txtPullok && this.txtPullok.setNativeProps({style: styles.hide});
             this.txtPullrelease && this.txtPullrelease.setNativeProps({style: styles.hide});
-        } else if (pullok) {
+        } else if (pullState == 'pullok') {
             this.txtPulling && this.txtPulling.setNativeProps({style: styles.hide});
             this.txtPullok && this.txtPullok.setNativeProps({style: styles.show});
             this.txtPullrelease && this.txtPullrelease.setNativeProps({style: styles.hide});
-        } else if (pullrelease) {
+        } else if (pullState == 'pullrelease') {
             this.txtPulling && this.txtPulling.setNativeProps({style: styles.hide});
             this.txtPullok && this.txtPullok.setNativeProps({style: styles.hide});
             this.txtPullrelease && this.txtPullrelease.setNativeProps({style: styles.show});
@@ -43,22 +43,16 @@ export default class PullViewDemo extends PureComponent {
 
     topIndicatorRender = () => {
         return (
-            <View style={{
-                flexDirection: 'row',
-                justifyContent: 'center',
-                alignItems: 'center',
-                height: topIndicatorHeight
-            }}>
+            <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: topIndicatorHeight}}>
+
                 <ActivityIndicator size="small" color="gray" style={{marginRight: 5}}/>
-                <Text ref={(c) => {
-                    this.txtPulling = c;
-                }} style={styles.hide}>pulling...</Text>
-                <Text ref={(c) => {
-                    this.txtPullok = c;
-                }} style={styles.hide}>pullok...</Text>
-                <Text ref={(c) => {
-                    this.txtPullrelease = c;
-                }} style={styles.hide}>pullrelease...</Text>
+
+                <Text ref={(c) => this.txtPulling = c} style={styles.hide}>pulling...</Text>
+
+                <Text ref={(c) => this.txtPullok = c} style={styles.hide}>pullok...</Text>
+
+                <Text ref={(c) => this.txtPullrelease = c} style={styles.hide}>pullrelease...</Text>
+
             </View>
         );
     }
@@ -66,12 +60,12 @@ export default class PullViewDemo extends PureComponent {
 
     _onPullRelease = () => {
         setTimeout(() => {
-            this.pull && this.pull.resolveHandler()
+            this.pull && this.pull.finishRefresh()
         }, 2000)
     }
 
     componentDidMount() {
-        this.pull && this.pull.beginRefresh()
+        this.pull && this.pull.startRefresh()
     }
 }
 
