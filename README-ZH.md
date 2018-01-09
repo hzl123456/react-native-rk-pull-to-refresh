@@ -6,6 +6,7 @@
 ![android](https://github.com/hzl123456/react-native-rk-pull-to-refresh/blob/master/image/android.gif)
 ## 安装
 npm install react-native-rk-pull-to-refresh --save <br>
+react-native react-native-rk-pull-to-refresh
 ## 如何使用
 它内部包含了PullView,PullScrollView,PullListView和PullFlatList，如果你想使用PullFlatList的话，那么你要保持你的React Native版本在0.43及以上。并且你要添加如下的代码到FlatList(node_modules/react-native/Libraries/Lists/FlatList.js)中
 ```
@@ -50,7 +51,7 @@ export default class PullListViewDemo extends PureComponent {
     render() {
         return (
             <PullListView
-                ref={(c)=>this.pull=c}
+                ref={(c) => this.pull = c}
                 isContentScroll={true}
                 style={{flex: 1, width: width}}
                 onPushing={this.props.onPushing}
@@ -62,27 +63,26 @@ export default class PullListViewDemo extends PureComponent {
 
     _onPullRelease = () => {
         setTimeout(() => {
-            this.pull && this.pull.resolveHandler()
+            this.pull && this.pull.finishRefresh()
         }, 2000)
     }
 
     _renderRow = (rowData) => {
         return (
-            <View style={{flex: 1, height: 50, justifyContent: 'center', alignItems: 'center'}}>
+            <View style={{width: width, height: 50, justifyContent: 'center', alignItems: 'center'}}>
                 <Text>{rowData}</Text>
             </View>);
     }
 
     componentDidMount() {
-        this.pull && this.pull.beginRefresh()
+        this.pull && this.pull.startRefresh()
     }
 }
-
 ```
 ### PullView自定义样式的使用
 ```
 import React, {PureComponent} from 'react';
-import {View, Text, Dimensions,StyleSheet,ActivityIndicator} from 'react-native';
+import {View, Text, Dimensions, StyleSheet, ActivityIndicator} from 'react-native';
 import {PullView} from 'react-native-rk-pull-to-refresh'
 
 const width = Dimensions.get('window').width
@@ -107,16 +107,16 @@ export default class PullViewDemo extends PureComponent {
         )
     }
 
-    onPullStateChangeHeight = (pulling, pullok, pullrelease, moveHeight) => {
-        if (pulling) {
+    onPullStateChangeHeight = (pullState, moveHeight) => {
+        if (pullState == 'pulling') {
             this.txtPulling && this.txtPulling.setNativeProps({style: styles.show});
             this.txtPullok && this.txtPullok.setNativeProps({style: styles.hide});
             this.txtPullrelease && this.txtPullrelease.setNativeProps({style: styles.hide});
-        } else if (pullok) {
+        } else if (pullState == 'pullok') {
             this.txtPulling && this.txtPulling.setNativeProps({style: styles.hide});
             this.txtPullok && this.txtPullok.setNativeProps({style: styles.show});
             this.txtPullrelease && this.txtPullrelease.setNativeProps({style: styles.hide});
-        } else if (pullrelease) {
+        } else if (pullState == 'pullrelease') {
             this.txtPulling && this.txtPulling.setNativeProps({style: styles.hide});
             this.txtPullok && this.txtPullok.setNativeProps({style: styles.hide});
             this.txtPullrelease && this.txtPullrelease.setNativeProps({style: styles.show});
@@ -127,10 +127,15 @@ export default class PullViewDemo extends PureComponent {
     topIndicatorRender = () => {
         return (
             <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: topIndicatorHeight}}>
+
                 <ActivityIndicator size="small" color="gray" style={{marginRight: 5}}/>
-                <Text ref={(c) => {this.txtPulling = c;}} style={styles.hide}>pulling...</Text>
-                <Text ref={(c) => {this.txtPullok = c;}} style={styles.hide}>pullok...</Text>
-                <Text ref={(c) => {this.txtPullrelease = c;}} style={styles.hide}>pullrelease...</Text>
+
+                <Text ref={(c) => this.txtPulling = c} style={styles.hide}>pulling...</Text>
+
+                <Text ref={(c) => this.txtPullok = c} style={styles.hide}>pullok...</Text>
+
+                <Text ref={(c) => this.txtPullrelease = c} style={styles.hide}>pullrelease...</Text>
+
             </View>
         );
     }
@@ -138,12 +143,12 @@ export default class PullViewDemo extends PureComponent {
 
     _onPullRelease = () => {
         setTimeout(() => {
-            this.pull && this.pull.resolveHandler()
+            this.pull && this.pull.finishRefresh()
         }, 2000)
     }
 
     componentDidMount() {
-        this.pull && this.pull.beginRefresh()
+        this.pull && this.pull.startRefresh()
     }
 }
 
@@ -173,8 +178,8 @@ topIndicatorHeight |number |yes | |下拉刷新头部的高度，当topIndicator
 onPullStateChangeHeight |func|yes| |下拉时候的回调，主要是刷新的状态的下拉的距离
 onPushing|func|yes| |下拉时候的回调，告诉外界此时是否在下拉刷新
 ## 方法
-beginRefresh():手动调用下拉刷新功能 <br>
-resolveHandler():结束下拉刷新
+startRefresh():手动调用下拉刷新功能 <br>
+finishRefresh():结束下拉刷新
 
 
 
