@@ -3,7 +3,8 @@
  * 邮箱：mail@hezhilin.cc
  */
 'use strict';
-import React, {PureComponent, PropTypes} from  'react';
+import React, {PureComponent} from  'react';
+import PropTypes from 'prop-types';
 import {StyleSheet, View, TouchableOpacity, Text, Animated} from  'react-native';
 
 export default class TabLayout extends PureComponent {
@@ -16,16 +17,16 @@ export default class TabLayout extends PureComponent {
     }
 
     static  propTypes = {
-        goToPage: React.PropTypes.func,
-        activeTab: React.PropTypes.number,
-        tabs: React.PropTypes.array,
-        backgroundColor: React.PropTypes.string,
-        activeTextColor: React.PropTypes.string,
-        inactiveTextColor: React.PropTypes.string,
-        textStyle: Text.propTypes.style,
-        tabStyle: View.propTypes.style,
-        renderTab: React.PropTypes.func,
-        underlineStyle: View.propTypes.style,
+        goToPage: PropTypes.func,
+        activeTab: PropTypes.number,
+        tabs: PropTypes.array,
+        backgroundColor: PropTypes.string,
+        activeTextColor: PropTypes.string,
+        inactiveTextColor: PropTypes.string,
+        textStyle: PropTypes.object,
+        tabStyle: PropTypes.object,
+        renderTab: PropTypes.func,
+        underlineStyle: PropTypes.object,
     }
 
     static defaultProps = {

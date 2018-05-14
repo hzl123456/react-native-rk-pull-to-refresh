@@ -14,6 +14,7 @@ export default class Main extends Component {
 
     constructor(props) {
         super(props);
+        console.disableYellowBox = true; //忽略黄色警告
         this.state = {locked: false, currentIndex: 0}
     }
 
@@ -37,7 +38,6 @@ export default class Main extends Component {
             </ScrollableTabView>
         )
     }
-
 
     renderAndroid = () => {
         return (
