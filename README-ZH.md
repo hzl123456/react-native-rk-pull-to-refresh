@@ -8,22 +8,7 @@
 npm install react-native-rk-pull-to-refresh --save <br>
 react-native link react-native-rk-pull-to-refresh
 ## 如何使用
-它内部包含了PullView,PullScrollView,PullListView和PullFlatList，如果你想使用PullFlatList的话，那么你要保持你的React Native版本在0.43及以上。并且你要添加如下的代码到FlatList(node_modules/react-native/Libraries/Lists/FlatList.js)中
-```
-...
-getScrollMetrics = () => {
-    return this._listRef.getScrollMetrics()
-}
-...
-```
-同时在VirtualizedList(node_modules/react-native/Libraries/Lists/VirtualizedList.js)中添加如下代码
-```
-...
- getScrollMetrics = () => {
-    return this._scrollMetrics
- }
- ...
-```
+它内部包含了PullView,PullScrollView,PullListView和PullFlatList，如果你想使用PullFlatList的话，那么你要保持你的React Native版本在0.43及以上。
 ### PullListView默认样式的使用
 ```
 import React, {PureComponent} from 'react';
