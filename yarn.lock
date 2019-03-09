@@ -4231,9 +4231,9 @@ react-is@^16.3.1:
   version "16.3.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.3.2.tgz#f4d3d0e2f5fbb6ac46450641eb2e25bf05d36b22"
 
-react-native-rk-pull-to-refresh@^1.2.5:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/react-native-rk-pull-to-refresh/-/react-native-rk-pull-to-refresh-1.2.5.tgz#48c41bf57ca378e968267edc4a2d0dd0787abcea"
+react-native-rk-pull-to-refresh@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/react-native-rk-pull-to-refresh/-/react-native-rk-pull-to-refresh-1.2.6.tgz#779042c478b62fca9444d019a7c3deea720e92f2"
 
 react-native-scrollable-tab-view@^0.10.0:
   version "0.10.0"
