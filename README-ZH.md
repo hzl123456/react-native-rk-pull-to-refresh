@@ -1,5 +1,5 @@
 
-# react-native-rk-pull-to-refresh（ios/android）
+# react-native-harrison-pull-to-refresh（ios/android）
 一个在React Native上使用的下拉刷新组件，同时支持android和ios并且拥有相同的Api。当然你可以自定义你自己的下拉刷新样式。它可以支持绝大多数的React Native中的组件实现下拉刷新功能。它里面已经实现了View,Scrollview,Listview和Flatlist的下拉刷新
 ## 效果展示
 ![ios](https://github.com/hzl123456/react-native-rk-pull-to-refresh/blob/master/image/ios.gif) <br><br>
